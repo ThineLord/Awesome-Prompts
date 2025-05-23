@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页 - AI提示词大全</title>
+  <link href="assets/css/tailwind.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/theme.js" defer></script>
+  <script src="assets/js/lang.js" defer></script>
+</head>
+<body class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen flex flex-col">
+  <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center gap-4">
+        <span class="font-bold text-xl tracking-tight">AI Prompts</span>
+        <nav class="hidden md:flex gap-6 text-base">
+          <a href="home.html" class="text-blue-600 font-semibold" data-i18n="home">首页</a>
+          <a href="prompts.html" class="hover:text-blue-600" data-i18n="prompts">提示词</a>
+          <a href="about.html" class="hover:text-blue-600" data-i18n="about">关于</a>
+          <a href="contact.html" class="hover:text-blue-600" data-i18n="contact">联系我们</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleTheme()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换明暗模式">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71"/><circle cx="12" cy="12" r="5"/></svg>
+        </button>
+        <button onclick="toggleLang()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换语言">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v18m9-9H3"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main class="flex-1 max-w-5xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-8" data-i18n="home">首页</h1>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">功能总览</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col items-center">
+          <svg class="w-10 h-10 mb-2 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+          <span class="font-semibold mb-1">AI提示词大全</span>
+          <span class="text-neutral-500 text-sm">收录各平台优质提示词</span>
+        </div>
+        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col items-center">
+          <svg class="w-10 h-10 mb-2 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8"/></svg>
+          <span class="font-semibold mb-1">多平台支持</span>
+          <span class="text-neutral-500 text-sm">ChatGPT、Midjourney、Claude等</span>
+        </div>
+        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col items-center">
+          <svg class="w-10 h-10 mb-2 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20v-6m0 0V4m0 10h8m-8 0H4"/></svg>
+          <span class="font-semibold mb-1">持续更新</span>
+          <span class="text-neutral-500 text-sm">不断收录新优质内容</span>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">分类入口</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a href="prompts.html#chatgpt" class="rounded-lg bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-3 font-medium text-center hover:scale-105 transition">ChatGPT</a>
+        <a href="prompts.html#midjourney" class="rounded-lg bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-4 py-3 font-medium text-center hover:scale-105 transition">Midjourney</a>
+        <a href="prompts.html#claude" class="rounded-lg bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-4 py-3 font-medium text-center hover:scale-105 transition">Claude</a>
+        <a href="prompts.html#notionai" class="rounded-lg bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-4 py-3 font-medium text-center hover:scale-105 transition">NotionAI</a>
+      </div>
+    </section>
+  </main>
+  <footer class="mt-16 py-6 text-center text-neutral-500 text-sm border-t border-neutral-200 dark:border-neutral-800">
+    &copy; 2024 AI Prompts. Inspired by <a href="https://prompts.chat/" class="text-blue-500 hover:underline">prompts.chat</a> | <a href="about.html" class="hover:underline" data-i18n="about">关于</a>
+  </footer>
+</body>
+</html> 

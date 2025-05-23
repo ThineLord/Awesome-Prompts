@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提示词 - AI提示词大全</title>
+  <link href="assets/css/tailwind.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/theme.js" defer></script>
+  <script src="assets/js/lang.js" defer></script>
+</head>
+<body class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen flex flex-col">
+  <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center gap-4">
+        <span class="font-bold text-xl tracking-tight">AI Prompts</span>
+        <nav class="hidden md:flex gap-6 text-base">
+          <a href="home.html" class="hover:text-blue-600" data-i18n="home">首页</a>
+          <a href="prompts.html" class="text-blue-600 font-semibold" data-i18n="prompts">提示词</a>
+          <a href="about.html" class="hover:text-blue-600" data-i18n="about">关于</a>
+          <a href="contact.html" class="hover:text-blue-600" data-i18n="contact">联系我们</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleTheme()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换明暗模式">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71"/><circle cx="12" cy="12" r="5"/></svg>
+        </button>
+        <button onclick="toggleLang()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换语言">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v18m9-9H3"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main class="flex-1 max-w-5xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-8" data-i18n="allPrompts">全部提示词</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col">
+        <h2 class="font-bold text-lg mb-2">ChatGPT 提示词</h2>
+        <p class="mb-2 text-neutral-600 dark:text-neutral-300">高效提升对话体验的精选提示词。</p>
+        <a href="prompt-detail.html?id=chatgpt" class="text-blue-600 hover:underline">查看详情</a>
+      </div>
+      <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col">
+        <h2 class="font-bold text-lg mb-2">Midjourney 绘画</h2>
+        <p class="mb-2 text-neutral-600 dark:text-neutral-300">助你创作惊艳AI图片的优质提示词。</p>
+        <a href="prompt-detail.html?id=midjourney" class="text-blue-600 hover:underline">查看详情</a>
+      </div>
+      <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col">
+        <h2 class="font-bold text-lg mb-2">Claude 助手</h2>
+        <p class="mb-2 text-neutral-600 dark:text-neutral-300">Claude平台专用高效提示词。</p>
+        <a href="prompt-detail.html?id=claude" class="text-blue-600 hover:underline">查看详情</a>
+      </div>
+      <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col">
+        <h2 class="font-bold text-lg mb-2">NotionAI 助手</h2>
+        <p class="mb-2 text-neutral-600 dark:text-neutral-300">提升NotionAI效率的实用提示词。</p>
+        <a href="prompt-detail.html?id=notionai" class="text-blue-600 hover:underline">查看详情</a>
+      </div>
+    </div>
+  </main>
+  <footer class="mt-16 py-6 text-center text-neutral-500 text-sm border-t border-neutral-200 dark:border-neutral-800">
+    &copy; 2024 AI Prompts. Inspired by <a href="https://prompts.chat/" class="text-blue-500 hover:underline">prompts.chat</a> | <a href="about.html" class="hover:underline" data-i18n="about">关于</a>
+  </footer>
+</body>
+</html> 
