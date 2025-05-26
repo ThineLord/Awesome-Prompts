@@ -1,0 +1,115 @@
+/* ASCII + CRT 复古风格设计系统基础样式 */
+
+:root {
+  --crt-green: #00ff41;
+  --crt-bg: #101010;
+  --crt-glow: 0 0 8px #00ff41, 0 0 2px #00ff41;
+  --crt-scanline: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,255,65,0.08) 3px,
+    rgba(0,0,0,0) 4px
+  );
+  --crt-border: 2px solid #00ff41;
+  --crt-radius: 6px;
+  --crt-font: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+}
+
+body {
+  background: 
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,255,65,0.04) 0px,
+      rgba(0,255,65,0.04) 1px,
+      transparent 2px,
+      transparent 4px
+    ),
+    var(--crt-bg);
+  color: var(--crt-green);
+  font-family: var(--crt-font);
+  text-shadow: var(--crt-glow);
+  letter-spacing: 0.04em;
+  position: relative;
+}
+
+/* ASCII 边框和按钮 */
+.ascii-box {
+  border: var(--crt-border);
+  border-radius: var(--crt-radius);
+  background: rgba(0,255,65,0.04);
+  box-shadow: 0 0 16px #00ff4144, 0 0 2px #00ff41;
+  padding: 1.5em;
+  margin: 1em 0;
+  font-family: var(--crt-font);
+  position: relative;
+}
+
+.button-crt {
+  border: var(--crt-border);
+  border-radius: var(--crt-radius);
+  background: rgba(0,255,65,0.12);
+  color: var(--crt-green);
+  font-family: var(--crt-font);
+  padding: 0.5em 1.5em;
+  margin: 0.5em 0;
+  cursor: pointer;
+  box-shadow: 0 0 8px #00ff4144, 0 0 2px #00ff41;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  text-shadow: var(--crt-glow);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+.button-crt:active {
+  background: rgba(0,255,65,0.25);
+  box-shadow: 0 0 24px #00ff4199, 0 0 2px #00ff41;
+  transform: scale(0.97);
+}
+.button-crt::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, #00ff4166 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.button-crt:active::after {
+  opacity: 0.5;
+  animation: crt-flash 0.2s linear;
+}
+@keyframes crt-flash {
+  0% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+/* ASCII 风格输入框 */
+.input-crt {
+  border: var(--crt-border);
+  border-radius: var(--crt-radius);
+  background: rgba(0,255,65,0.08);
+  color: var(--crt-green);
+  font-family: var(--crt-font);
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+  box-shadow: 0 0 8px #00ff4144;
+  outline: none;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.input-crt:focus {
+  background: rgba(0,255,65,0.18);
+  box-shadow: 0 0 24px #00ff4199;
+}
+
+/* ASCII 风格滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #222;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff41;
+  border-radius: 4px;
+  box-shadow: 0 0 8px #00ff41;
+} 
