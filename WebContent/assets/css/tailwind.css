@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* 自定义明亮模式配色（无 .dark 类时生效） */
+html:not(.dark) body {
+  background-color: #f6f5f3;
+  color: #2d3748;
+}
+html:not(.dark) .bg-white {
+  background-color: #f6f5f3 !important;
+}
+html:not(.dark) .bg-neutral-50 {
+  background-color: #f3f6f9 !important;
+}
+html:not(.dark) .bg-neutral-100 {
+  background-color: #e9ecef !important;
+}
+html:not(.dark) .bg-white\/80 {
+  background-color: rgba(246,245,243,0.8) !important;
+}
+html:not(.dark) .border-neutral-200 {
+  border-color: #d1d5db !important;
+}
+html:not(.dark) .text-neutral-900 {
+  color: #475569 !important;
+}
+html:not(.dark) .text-neutral-600 {
+  color: #64748b !important;
+}
+html:not(.dark) .shadow {
+  box-shadow: 0 2px 8px 0 rgba(100,116,139,0.06) !important;
+}
+html:not(.dark) .hover\:bg-neutral-100:hover {
+  background-color: #e3e6ea !important;
+}
+html:not(.dark) .border-neutral-700 {
+  border-color: #bfc5ce !important;
+}
+html:not(.dark) .focus\:ring-blue-500:focus {
+  box-shadow: 0 0 0 2px #64748b33 !important;
+} 

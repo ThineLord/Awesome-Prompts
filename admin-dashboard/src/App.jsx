@@ -5,7 +5,11 @@ import './App.css'
 import './designSystem.css'
 import { prompts as mockPrompts } from './data/prompts.mock'
 
-const apps = Array.from(new Set(mockPrompts.map(p => p.app))).map(app => ({ id: app, name: app }))
+// BaseContent 下所有 app 目录
+const allApps = [
+  'ChatGPT', 'Claude', 'Midjourney', 'DALL-E', 'NotionAI', 'Tiangong', 'Veo3', 'Gemini', 'Cursor', 'Copilot', 'Jasper', 'Grok', 'StableDiffusion', 'Trea', 'Example:示例'
+];
+const apps = allApps.map(app => ({ id: app, name: app }));
 
 function App() {
   const [selectedApp, setSelectedApp] = useState(apps[0].id)
@@ -16,7 +20,7 @@ function App() {
   return (
     <div className="flex h-screen bg-black text-green-400">
       {/* 侧边栏 */}
-      <aside className="w-48 border-r border-green-400 bg-black flex flex-col ascii-box">
+      <aside className="w-36 border-r border-green-400 bg-black flex flex-col ascii-box">
         <div className="p-4 font-bold text-xl border-b border-green-400">App 列表</div>
         <nav className="flex-1 overflow-y-auto">
           {apps.map(app => (
@@ -25,7 +29,7 @@ function App() {
               className={`w-full text-left px-4 py-2 border-b border-green-400 hover:bg-green-900 button-crt ${selectedApp === app.id ? 'bg-green-950 font-bold' : ''}`}
               onClick={() => { setSelectedApp(app.id); setSelectedPrompt(null); }}
             >
-              {app.name}
+              <span className="truncate block max-w-full">{app.name}</span>
             </button>
           ))}
         </nav>

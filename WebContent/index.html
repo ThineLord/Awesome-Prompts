@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" class="light">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
   <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-30">
     <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
       <div class="flex items-center gap-4">
-        <span class="font-bold text-xl tracking-tight">AI Prompts</span>
+        <a href="index.html" class="font-bold text-xl tracking-tight">AI Prompts</a>
         <nav class="hidden md:flex gap-6 text-base">
           <a href="home.html" class="hover:text-blue-600" data-i18n="home">首页</a>
           <a href="prompts.html" class="hover:text-blue-600" data-i18n="prompts">提示词</a>
@@ -22,11 +22,14 @@
         </nav>
       </div>
       <div class="flex items-center gap-2">
-        <button onclick="toggleTheme()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换明暗模式">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71"/><circle cx="12" cy="12" r="5"/></svg>
+        <button id="theme-toggle" onclick="toggleTheme()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换明暗模式">
+          <span id="theme-icon">🌞</span>
         </button>
-        <button onclick="toggleLang()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换语言">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v18m9-9H3"/></svg>
+        <button id="lang-toggle" onclick="toggleLang()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换语言">
+          <span id="lang-icon">中/En</span>
+        </button>
+        <button id="settings-toggle" onclick="location.href='settings.html'" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="设置">
+          <span id="settings-icon">⚙️</span>
         </button>
       </div>
     </div>

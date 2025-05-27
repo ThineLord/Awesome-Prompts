@@ -1,13 +1,27 @@
 // 主题切换脚本，支持明暗模式和本地存储
+function updateThemeIcon() {
+  const icon = document.getElementById('theme-icon');
+  if (!icon) return;
+  if (document.documentElement.classList.contains('dark')) {
+    icon.textContent = '🌙';
+  } else {
+    icon.textContent = '🌞';
+  }
+}
+
 function setTheme(theme) {
-  document.documentElement.classList.remove('light', 'dark');
-  document.documentElement.classList.add(theme);
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
   localStorage.setItem('theme', theme);
+  updateThemeIcon();
 }
 
 function toggleTheme() {
-  const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-  setTheme(current === 'dark' ? 'light' : 'dark');
+  const isDark = document.documentElement.classList.contains('dark');
+  setTheme(isDark ? 'light' : 'dark');
 }
 
 (function () {
@@ -17,4 +31,5 @@ function toggleTheme() {
   } else {
     setTheme('light');
   }
+  updateThemeIcon();
 })(); 
