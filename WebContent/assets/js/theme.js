@@ -10,10 +10,12 @@ function updateThemeIcon() {
 }
 
 function setTheme(theme) {
+  // 先移除所有主题相关class，保证唯一
+  document.documentElement.classList.remove('dark', 'light');
   if (theme === 'dark') {
     document.documentElement.classList.add('dark');
   } else {
-    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('light');
   }
   localStorage.setItem('theme', theme);
   updateThemeIcon();

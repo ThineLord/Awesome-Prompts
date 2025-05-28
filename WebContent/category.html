@@ -8,12 +8,63 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="assets/js/theme.js" defer></script>
   <script src="assets/js/lang.js" defer></script>
+  <style>
+    .neon-logo {
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+    html.dark .neon-logo {
+      color: #fff;
+      text-shadow:
+        0 0 8px #00eaff,
+        0 0 16px #00eaff,
+        0 0 32px #00eaff,
+        0 0 64px #00eaff,
+        0 0 128px #00eaff;
+    }
+    html.dark .neon-logo::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 140%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(0,234,255,0.25) 0%, rgba(0,234,255,0.08) 80%, transparent 100%);
+      filter: blur(16px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    html.light .neon-logo {
+      color: #111;
+      text-shadow:
+        0 0 8px #ff0033,
+        0 0 16px #ff0033,
+        0 0 32px #ff0033,
+        0 0 64px #ff0033,
+        0 0 128px #ff0033;
+    }
+    html.light .neon-logo::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 140%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(255,0,51,0.18) 0%, rgba(255,0,51,0.06) 80%, transparent 100%);
+      filter: blur(16px);
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen flex flex-col">
   <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-30">
     <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
       <div class="flex items-center gap-4">
-        <a href="index.html" class="font-bold text-xl tracking-tight">AI Prompts</a>
+        <a href="index.html" class="font-bold text-xl tracking-tight neon-logo">Awesome Prompts</a>
         <nav class="hidden md:flex gap-6 text-base">
           <a href="home.html" class="hover:text-blue-600" data-i18n="home">首页</a>
           <a href="category.html" class="text-blue-600 font-semibold" data-i18n="category">分类</a>
