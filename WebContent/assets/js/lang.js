@@ -35,6 +35,8 @@ const langData = {
     category: '分类',
     themeMode: '明暗模式',
     switch: '切换',
+    contributors: '贡献者',
+    initiator: '项目发起人',
   },
   en: {
     home: 'Home',
@@ -71,6 +73,8 @@ const langData = {
     category: 'Category',
     themeMode: 'Theme Mode',
     switch: 'Switch',
+    contributors: 'Contributors',
+    initiator: 'Initiator',
   }
 };
 

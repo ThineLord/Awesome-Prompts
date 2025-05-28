@@ -59,6 +59,72 @@
       pointer-events: none;
     }
   </style>
+  <style>
+    .contributor-card {
+      transition: box-shadow 0.3s, transform 0.3s, background 0.3s;
+      box-shadow: 0 4px 32px 0 rgba(0,234,255,0.08), 0 1.5px 8px 0 rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.18);
+      position: relative;
+      overflow: hidden;
+    }
+    .dark .contributor-card {
+      background: rgba(30,41,59,0.22);
+      box-shadow: 0 4px 32px 0 rgba(0,234,255,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.18);
+    }
+    .contributor-card:hover {
+      box-shadow: 0 8px 48px 0 rgba(0,234,255,0.22), 0 4px 16px 0 rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.28);
+      transform: translateY(-4px) scale(1.04);
+    }
+    .dark .contributor-card:hover {
+      background: rgba(30,41,59,0.32);
+      box-shadow: 0 8px 48px 0 rgba(0,234,255,0.28), 0 4px 16px 0 rgba(0,0,0,0.22);
+    }
+  </style>
+  <style>
+    .contributor-card-main {
+      background: rgba(250,245,255,0.82);
+      border: 1.5px solid rgba(128,0,255,0.13);
+      box-shadow: 0 8px 32px 0 rgba(128,0,255,0.10), 0 1.5px 8px 0 rgba(128,0,255,0.08);
+    }
+    .contributor-card-main:hover {
+      background: rgba(245,240,255,0.95);
+      border: 1.5px solid rgba(128,0,255,0.22);
+      box-shadow: 0 16px 48px 0 rgba(128,0,255,0.18), 0 4px 16px 0 rgba(128,0,255,0.13);
+    }
+    .dark .contributor-card-main {
+      background: rgba(60,30,80,0.22);
+      box-shadow: 0 4px 32px 0 rgba(128,0,255,0.18), 0 1.5px 8px 0 rgba(128,0,255,0.13);
+    }
+    .dark .contributor-card-main:hover {
+      background: rgba(60,30,80,0.32);
+      box-shadow: 0 8px 48px 0 rgba(128,0,255,0.28), 0 4px 16px 0 rgba(128,0,255,0.22);
+    }
+    .contributor-card-gold {
+      background: rgba(255,250,230,0.82);
+      border: 1.5px solid rgba(255,215,80,0.10);
+      box-shadow: 0 8px 32px 0 rgba(255,215,80,0.08), 0 1.5px 8px 0 rgba(255,215,80,0.06);
+    }
+    .contributor-card-gold:hover {
+      background: rgba(255,245,220,0.95);
+      border: 1.5px solid rgba(255,215,80,0.18);
+      box-shadow: 0 16px 48px 0 rgba(255,215,80,0.15), 0 4px 16px 0 rgba(255,215,80,0.10);
+    }
+    .dark .contributor-card-gold {
+      background: rgba(80,70,30,0.18);
+      box-shadow: 0 4px 32px 0 rgba(255,215,80,0.13), 0 1.5px 8px 0 rgba(255,215,80,0.10);
+    }
+    .dark .contributor-card-gold:hover {
+      background: rgba(80,70,30,0.28);
+      box-shadow: 0 8px 48px 0 rgba(255,215,80,0.22), 0 4px 16px 0 rgba(255,215,80,0.18);
+    }
+  </style>
+  <style>
+    .contributor-name {
+      font-family: 'Times New Roman', Times, serif, cursive;
+      text-decoration: none !important;
+    }
+  </style>
 </head>
 <body class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen flex flex-col">
   <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-30">
@@ -92,6 +158,24 @@
         <h2 class="font-semibold mb-2">项目简介</h2>
         <p class="mb-2">本项目致力于收集和整理各大AI平台的优质提示词，帮助用户高效使用AI工具，灵感来源于 <a href="https://prompts.chat/" class="text-blue-600 hover:underline">prompts.chat</a>。</p>
         <p>欢迎贡献和反馈，共同完善AI提示词生态！</p>
+      </div>
+    </section>
+    <section class="mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold mb-8" data-i18n="contributors">贡献者</h1>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <!-- 你的卡片 -->
+        <div class="backdrop-blur bg-white/40 dark:bg-neutral-800/40 border border-white/30 dark:border-neutral-700 rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform duration-200 hover:scale-105 hover:shadow-2xl relative contributor-card contributor-card-main">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-4 border-4 border-white/60 shadow-lg relative">
+            <img src="assets/img/hanz-avatar.png" alt="Hanz" class="w-full h-full object-cover">
+            <div class="absolute inset-0 pointer-events-none" style="box-shadow:0 0 32px 8px rgba(128,0,255,0.18);"></div>
+          </div>
+          <a href="https://github.com/ThineLord" target="_blank" rel="noopener noreferrer" class="font-bold text-lg mb-1 text-blue-700 dark:text-blue-300 font-serif contributor-name">Hanz</a>
+          <div class="text-neutral-500 text-sm" data-i18n="initiator">项目发起人</div>
+        </div>
+        <!-- 空卡片 -->
+        <div class="backdrop-blur bg-white/30 dark:bg-neutral-800/30 border border-white/20 dark:border-neutral-700 rounded-2xl shadow p-6 flex flex-col items-center opacity-60 contributor-card contributor-card-gold"></div>
+        <div class="backdrop-blur bg-white/30 dark:bg-neutral-800/30 border border-white/20 dark:border-neutral-700 rounded-2xl shadow p-6 flex flex-col items-center opacity-60 contributor-card contributor-card-gold"></div>
+        <div class="backdrop-blur bg-white/30 dark:bg-neutral-800/30 border border-white/20 dark:border-neutral-700 rounded-2xl shadow p-6 flex flex-col items-center opacity-60 contributor-card contributor-card-gold"></div>
       </div>
     </section>
     <section class="mb-12">
