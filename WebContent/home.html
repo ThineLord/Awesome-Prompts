@@ -58,6 +58,45 @@
       z-index: -1;
       pointer-events: none;
     }
+    .ai-marquee-border {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .ai-marquee-border::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      z-index: 1;
+      border-radius: 1rem;
+      padding: 0;
+      background: conic-gradient(
+        #a259ff 0deg, #00eaff 90deg, #00ffb8 180deg, #ffd600 270deg, #a259ff 360deg
+      );
+      filter: blur(0.5px) brightness(1.1);
+      animation: ai-marquee-spin 3s linear infinite;
+      pointer-events: none;
+      transition: filter 0.2s;
+    }
+    .ai-marquee-border:hover::before {
+      filter: blur(1.5px) brightness(1.2);
+    }
+    .ai-marquee-border > * {
+      position: relative;
+      z-index: 2;
+    }
+    .ai-marquee-border::after {
+      content: '';
+      position: absolute;
+      inset: 2.5px;
+      border-radius: 0.95rem;
+      background: inherit;
+      z-index: 1;
+    }
+    @keyframes ai-marquee-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen flex flex-col">
@@ -88,27 +127,22 @@
   <main class="flex-1 max-w-5xl mx-auto px-4 py-12">
     <h1 class="text-3xl md:text-4xl font-bold mb-8" data-i18n="home">首页</h1>
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">功能总览</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col items-center">
-          <svg class="w-10 h-10 mb-2 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
-          <span class="font-semibold mb-1">AI提示词大全</span>
-          <span class="text-neutral-500 text-sm">收录各平台优质提示词</span>
+      <h2 class="text-2xl font-semibold mb-4" data-i18n="popular">热门推荐</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg mb-2">ChatGPT 提示词</h3>
+          <p class="mb-2 text-neutral-600 dark:text-neutral-300">高效提升对话体验的精选提示词。</p>
+          <a href="prompt-detail.html?id=chatgpt" class="text-blue-600 hover:underline">查看详情</a>
         </div>
-        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col items-center">
-          <svg class="w-10 h-10 mb-2 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8"/></svg>
-          <span class="font-semibold mb-1">多平台支持</span>
-          <span class="text-neutral-500 text-sm">ChatGPT、Midjourney、Claude等</span>
-        </div>
-        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col items-center">
-          <svg class="w-10 h-10 mb-2 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20v-6m0 0V4m0 10h8m-8 0H4"/></svg>
-          <span class="font-semibold mb-1">持续更新</span>
-          <span class="text-neutral-500 text-sm">不断收录新优质内容</span>
+        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg mb-2">Midjourney 绘画</h3>
+          <p class="mb-2 text-neutral-600 dark:text-neutral-300">助你创作惊艳AI图片的优质提示词。</p>
+          <a href="prompt-detail.html?id=midjourney" class="text-blue-600 hover:underline">查看详情</a>
         </div>
       </div>
     </section>
     <section>
-      <h2 class="text-2xl font-semibold mb-4">分类入口</h2>
+      <h2 class="text-2xl font-semibold mb-4" data-i18n="category_entry">分类入口</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <a href="prompts.html#chatgpt" class="rounded-lg bg-pink-500 dark:bg-pink-700 text-white px-4 py-3 font-medium text-center hover:scale-105 transition">ChatGPT</a>
         <a href="prompts.html#claude" class="rounded-lg bg-orange-400 dark:bg-orange-600 text-white px-4 py-3 font-medium text-center hover:scale-105 transition">Claude</a>

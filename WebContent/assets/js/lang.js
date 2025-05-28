@@ -37,6 +37,14 @@ const langData = {
     switch: '切换',
     contributors: '贡献者',
     initiator: '项目发起人',
+    overview: '功能总览',
+    overview_card1_title: 'AI提示词大全',
+    overview_card1_desc: '收录各平台优质提示词',
+    overview_card2_title: '多平台支持',
+    overview_card2_desc: 'ChatGPT、Midjourney、Claude等',
+    overview_card3_title: '持续更新',
+    overview_card3_desc: '不断收录新优质内容',
+    category_entry: '分类入口',
   },
   en: {
     home: 'Home',
@@ -75,6 +83,14 @@ const langData = {
     switch: 'Switch',
     contributors: 'Contributors',
     initiator: 'Initiator',
+    overview: 'Overview',
+    overview_card1_title: 'AI Prompts Collection',
+    overview_card1_desc: 'Curated high-quality prompts for all platforms',
+    overview_card2_title: 'Multi-platform Support',
+    overview_card2_desc: 'ChatGPT, Midjourney, Claude, etc.',
+    overview_card3_title: 'Continuous Updates',
+    overview_card3_desc: 'Constantly adding new quality content',
+    category_entry: 'Categories',
   }
 };
 
