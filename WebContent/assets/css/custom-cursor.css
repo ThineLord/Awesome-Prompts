@@ -1,0 +1,26 @@
+/* 自定义彩色光晕鼠标样式 */
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 9999;
+  transition: background 0.2s, box-shadow 0.2s;
+  /* mix-blend-mode: lighten; */
+  pointer-events: none;
+}
+
+/* 明亮模式：更深红紫渐变+彩色光晕 */
+.custom-cursor.light {
+  background: radial-gradient(circle, rgba(180,0,90,0.55) 55%, rgba(255,0,120,0.38) 80%, transparent 100%) !important;
+  box-shadow: 0 0 24px 8px rgba(180,0,120,0.22), 0 0 48px 16px rgba(255,0,120,0.16) !important;
+}
+
+/* 黑暗模式：更深蓝紫渐变+光晕 */
+.custom-cursor.dark {
+  background: radial-gradient(circle, rgba(80,40,180,0.75) 60%, rgba(60,0,120,0.55) 90%, transparent 100%) !important;
+  box-shadow: 0 0 24px 8px rgba(80,40,180,0.32), 0 0 48px 16px rgba(60,0,120,0.22) !important;
+} 

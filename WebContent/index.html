@@ -8,6 +8,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="assets/js/theme.js" defer></script>
   <script src="assets/js/lang.js" defer></script>
+  <link href="assets/css/custom-cursor.css" rel="stylesheet">
+  <script src="assets/js/custom-cursor.js" defer></script>
   <style>
     .neon-logo {
       position: relative;
@@ -107,7 +109,7 @@
         <nav class="hidden md:flex gap-6 text-base">
           <a href="home.html" class="hover:text-blue-600" data-i18n="home">首页</a>
           <a href="category.html" class="hover:text-blue-600" data-i18n="category">分类</a>
-          <a href="prompts.html" class="hover:text-blue-600" data-i18n="prompts">提示词</a>
+          <a href="explore.html" class="hover:text-blue-600" data-i18n="explore">探索</a>
           <a href="about.html" class="hover:text-blue-600" data-i18n="about">关于</a>
         </nav>
       </div>
@@ -124,14 +126,19 @@
       </div>
     </div>
   </header>
-  <main class="flex-1 flex flex-col items-center justify-center text-center px-4">
-    <h1 class="text-4xl md:text-5xl font-bold mt-16 mb-4" data-i18n="welcome">欢迎来到<span class="neon-logo">Awesome Prompts</span></h1>
-    <p class="text-lg md:text-xl mb-8 max-w-2xl" data-i18n="desc">本项目致力于收集和整理各大AI平台的优质提示词。</p>
-    <div class="w-full max-w-xl mb-8">
-      <input type="text" class="w-full rounded-lg border border-neutral-200 dark:border-neutral-700 px-4 py-3 text-lg bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="搜索提示词..." placeholder-i18n="search">
+  <main class="flex-1 flex flex-col items-center justify-center text-center px-0">
+    <div class="max-w-7xl w-full min-h-[70vh] flex flex-col justify-center items-center rounded-3xl shadow-2xl p-10 md:p-20 mx-auto mt-8 mb-6"
+      style="background:
+        radial-gradient(ellipse 80% 60% at 70% 20%, rgba(80,0,120,0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 30% 80%, rgba(0,80,160,0.6) 0%, transparent 80%),
+        radial-gradient(ellipse 50% 30% at 80% 80%, rgba(0,180,120,0.5) 0%, transparent 80%),
+        radial-gradient(ellipse 60% 60% at 20% 30%, rgba(200,80,0,0.4) 0%, transparent 80%),
+        linear-gradient(120deg, #232946 0%, #1a1a2e 100%);
+        box-shadow: 0 8px 48px 0 rgba(0,0,0,0.18);">
+      <h1 class="text-4xl md:text-5xl font-bold mt-8 mb-4" data-i18n="welcome">欢迎来到<span class="neon-logo">Awesome Prompts</span></h1>
+      <p class="text-lg md:text-xl mb-8 max-w-2xl" data-i18n="desc">本项目致力于收集和整理各大AI平台的优质提示词。</p>
     </div>
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4" data-i18n="overview">功能总览</h2>
+    <section class="max-w-7xl mx-auto mt-6 w-full">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow hover:shadow-lg transition flex flex-col items-center ai-marquee-border">
           <svg class="w-10 h-10 mb-2 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
@@ -160,5 +167,11 @@
     Inspired by <a href="https://prompts.chat/" class="text-blue-500 hover:underline">prompts.chat</a> |
     <a href="about.html" class="hover:underline" data-i18n="about">关于</a>
   </footer>
+  <script>
+    const cursor = document.querySelector('.custom-cursor');
+    console.log('cursor class:', cursor.className);
+    console.log('html class:', document.documentElement.className);
+    console.log('cursor computed background:', getComputedStyle(cursor).background);
+  </script>
 </body>
 </html> 

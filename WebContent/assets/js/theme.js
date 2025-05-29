@@ -10,13 +10,8 @@ function updateThemeIcon() {
 }
 
 function setTheme(theme) {
-  // 先移除所有主题相关class，保证唯一
-  document.documentElement.classList.remove('dark', 'light');
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.add('light');
-  }
+  // 只保留.dark或.light，移除所有其他class
+  document.documentElement.className = theme === 'dark' ? 'dark' : 'light';
   localStorage.setItem('theme', theme);
   updateThemeIcon();
 }
