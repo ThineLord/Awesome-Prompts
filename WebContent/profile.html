@@ -1,64 +1,153 @@
 <!DOCTYPE html>
-<html lang="zh" class="light">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>个人中心 - AI提示词大全</title>
   <link href="assets/css/tailwind.css" rel="stylesheet">
+  <link href="assets/css/common.css" rel="stylesheet">
+  <link href="assets/css/neon.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/common.js" defer></script>
   <script src="assets/js/theme.js" defer></script>
   <script src="assets/js/lang.js" defer></script>
 </head>
 <body class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen flex flex-col">
-  <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-30">
+  <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-50">
     <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
       <div class="flex items-center gap-4">
-        <a href="index.html" class="font-bold text-xl tracking-tight">AI Prompts</a>
+        <a href="index.html" class="font-bold text-xl tracking-tight neon-logo">Awesome Prompts</a>
         <nav class="hidden md:flex gap-6 text-base">
           <a href="home.html" class="hover:text-blue-600" data-i18n="home">首页</a>
+          <a href="create.html" class="hover:text-blue-600" data-i18n="create">创建</a>
           <a href="category.html" class="hover:text-blue-600" data-i18n="category">分类</a>
           <a href="explore.html" class="hover:text-blue-600" data-i18n="explore">探索</a>
           <a href="about.html" class="hover:text-blue-600" data-i18n="about">关于</a>
         </nav>
       </div>
       <div class="flex items-center gap-2">
-        <button id="theme-toggle" onclick="toggleTheme()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换明暗模式">
-          <span id="theme-icon">🌞</span>
-        </button>
-        <button id="lang-toggle" onclick="toggleLang()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换语言">
-          <span id="lang-icon">中/En</span>
-        </button>
-        <button id="settings-toggle" onclick="location.href='settings.html'" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="设置">
-          <span id="settings-icon">⚙️</span>
+        <button id="avatarButton" class="avatar-button">
+          <img src="assets/img/hanz-avatar.png" alt="Avatar">
         </button>
       </div>
     </div>
   </header>
-  <main class="flex-1 max-w-3xl mx-auto px-4 py-12">
-    <h1 class="text-3xl md:text-4xl font-bold mb-8" data-i18n="profile">个人中心</h1>
-    <section class="mb-12">
-      <div class="flex items-center gap-6 mb-6">
-        <div class="w-20 h-20 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-3xl font-bold text-blue-500">U</div>
+
+  <!-- 侧边栏 -->
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-content">
+      <a href="settings.html" class="sidebar-item">
+        <i class="fas fa-cog"></i>
+        <span data-i18n="settings">设置</span>
+      </a>
+      <a href="profile.html" class="sidebar-item">
+        <i class="fas fa-user"></i>
+        <span data-i18n="profile">个人资料</span>
+      </a>
+      <a href="about.html" class="sidebar-item">
+        <i class="fas fa-info-circle"></i>
+        <span data-i18n="about">关于</span>
+      </a>
+      <a href="help.html" class="sidebar-item">
+        <i class="fas fa-question-circle"></i>
+        <span data-i18n="help">帮助</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <a href="logout.html" class="sidebar-item text-red-500">
+        <i class="fas fa-sign-out-alt"></i>
+        <span data-i18n="logout">退出登录</span>
+      </a>
+    </div>
+  </div>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <main class="flex-1 max-w-5xl mx-auto px-4 py-8">
+    <div class="flex items-center justify-between mb-8">
+      <h1 class="text-2xl font-bold" data-i18n="profile">个人中心</h1>
+    </div>
+
+    <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-sm p-6">
+      <div class="flex items-center gap-4 mb-6">
+        <img src="assets/img/hanz-avatar.png" alt="Avatar" class="w-20 h-20 rounded-full">
         <div>
-          <div class="font-semibold text-lg">用户名</div>
-          <div class="text-neutral-500 text-sm">user@email.com</div>
+          <h2 class="text-xl font-semibold">Hanz</h2>
+          <p class="text-neutral-600 dark:text-neutral-400">hanz@example.com</p>
         </div>
       </div>
-      <div class="grid grid-cols-2 gap-6">
-        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow flex flex-col items-center">
-          <span class="font-semibold text-xl mb-2">12</span>
-          <span class="text-neutral-500">收藏</span>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1" data-i18n="username">用户名</label>
+            <input type="text" value="Hanz" class="w-full px-3 py-2 border border-neutral-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-900">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1" data-i18n="email">邮箱</label>
+            <input type="email" value="hanz@example.com" class="w-full px-3 py-2 border border-neutral-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-900">
+          </div>
         </div>
-        <div class="rounded-xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow flex flex-col items-center">
-          <span class="font-semibold text-xl mb-2">34</span>
-          <span class="text-neutral-500">历史记录</span>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1" data-i18n="password">密码</label>
+            <input type="password" value="********" class="w-full px-3 py-2 border border-neutral-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-900">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1" data-i18n="confirm_password">确认密码</label>
+            <input type="password" value="********" class="w-full px-3 py-2 border border-neutral-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-900">
+          </div>
         </div>
       </div>
-    </section>
-    <a href="settings.html" class="inline-block mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition" data-i18n="settings">设置</a>
+
+      <div class="mt-6 flex justify-end">
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700" data-i18n="save_changes">保存更改</button>
+      </div>
+    </div>
   </main>
-  <footer class="mt-16 py-6 text-center text-neutral-500 text-sm border-t border-neutral-200 dark:border-neutral-800">
-    &copy; 2024 AI Prompts. Inspired by <a href="https://prompts.chat/" class="text-blue-500 hover:underline">prompts.chat</a> | <a href="about.html" class="hover:underline" data-i18n="about">关于</a>
-  </footer>
+
+  <script>
+    // 初始化主题和语言
+    document.addEventListener('DOMContentLoaded', function() {
+      // 初始化主题
+      const isDark = localStorage.getItem('theme') === 'dark';
+      document.documentElement.classList.toggle('dark', isDark);
+      
+      // 初始化语言
+      const isEnglish = localStorage.getItem('language') === 'en';
+      document.documentElement.setAttribute('lang', isEnglish ? 'en' : 'zh');
+      
+      // 更新文本
+      updateTexts();
+    });
+
+    // 更新文本内容
+    function updateTexts() {
+      const isEnglish = document.documentElement.getAttribute('lang') === 'en';
+      const texts = {
+        home: isEnglish ? 'Home' : '首页',
+        create: isEnglish ? 'Create' : '创建',
+        category: isEnglish ? 'Category' : '分类',
+        explore: isEnglish ? 'Explore' : '探索',
+        about: isEnglish ? 'About' : '关于',
+        profile: isEnglish ? 'Profile' : '个人中心',
+        settings: isEnglish ? 'Settings' : '设置',
+        help: isEnglish ? 'Help' : '帮助',
+        logout: isEnglish ? 'Logout' : '退出登录',
+        username: isEnglish ? 'Username' : '用户名',
+        email: isEnglish ? 'Email' : '邮箱',
+        password: isEnglish ? 'Password' : '密码',
+        confirm_password: isEnglish ? 'Confirm Password' : '确认密码',
+        save_changes: isEnglish ? 'Save Changes' : '保存更改'
+      };
+
+      // 更新所有带有data-i18n属性的元素
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (texts[key]) {
+          element.textContent = texts[key];
+        }
+      });
+    }
+  </script>
 </body>
 </html> 

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="create_title">创建 - AI提示词大全</title>
   <link href="assets/css/tailwind.css" rel="stylesheet">
+  <link href="assets/css/common.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/common.js" defer></script>
   <script src="assets/js/theme.js" defer></script>
   <script src="assets/js/lang.js" defer></script>
   <style>
@@ -112,11 +115,102 @@
       z-index: -1;
       pointer-events: none;
     }
+    .avatar-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+      border: 2px solid transparent;
+    }
+    .avatar-button:hover {
+      transform: scale(1.05);
+      border-color: #3b82f6;
+    }
+    .avatar-button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 40;
+    }
+    .dark .sidebar {
+      background: rgba(23, 23, 23, 0.95);
+    }
+    .sidebar.open {
+      right: 0;
+    }
+    .sidebar-content {
+      padding: 80px 20px 20px;
+    }
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      color: #1f2937;
+    }
+    .dark .sidebar-item {
+      color: #e5e7eb;
+    }
+    .sidebar-item:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+    .dark .sidebar-item:hover {
+      background-color: rgba(59, 130, 246, 0.2);
+    }
+    .sidebar-item i {
+      margin-right: 12px;
+      font-size: 20px;
+      color: #3b82f6;
+    }
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+      z-index: 30;
+    }
+    .sidebar-overlay.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .sidebar-divider {
+      height: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      margin: 16px 0;
+    }
+    .dark .sidebar-divider {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .sidebar-item i {
+      width: 24px;
+      text-align: center;
+    }
   </style>
 </head>
 <body class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen flex flex-col">
   <!-- 顶栏 -->
-  <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-30">
+  <header class="backdrop-blur bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-50">
     <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
       <div class="flex items-center gap-4">
         <a href="index.html" class="font-bold text-xl tracking-tight neon-logo">Awesome Prompts</a>
@@ -129,18 +223,129 @@
         </nav>
       </div>
       <div class="flex items-center gap-2">
-        <button id="theme-toggle" onclick="toggleTheme()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换明暗模式">
-          <span id="theme-icon">🌞</span>
-        </button>
-        <button id="lang-toggle" onclick="toggleLang()" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="切换语言">
-          <span id="lang-icon">中/En</span>
-        </button>
-        <button id="settings-toggle" onclick="location.href='settings.html'" class="rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="设置">
-          <span id="settings-icon">⚙️</span>
+        <button id="avatarButton" class="avatar-button">
+          <img src="assets/img/hanz-avatar.png" alt="Avatar">
         </button>
       </div>
     </div>
   </header>
+
+  <!-- 侧边栏 -->
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-content">
+      <a href="settings.html" class="sidebar-item">
+        <i class="fas fa-cog"></i>
+        <span>设置</span>
+      </a>
+      <a href="profile.html" class="sidebar-item">
+        <i class="fas fa-user"></i>
+        <span>个人资料</span>
+      </a>
+      <a href="about.html" class="sidebar-item">
+        <i class="fas fa-info-circle"></i>
+        <span>关于</span>
+      </a>
+      <a href="help.html" class="sidebar-item">
+        <i class="fas fa-question-circle"></i>
+        <span>帮助</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <a href="logout.html" class="sidebar-item text-red-500">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>退出登录</span>
+      </a>
+    </div>
+  </div>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <!-- 添加侧边栏交互脚本 -->
+  <script>
+    // 主题和语言切换功能
+    function initThemeAndLang() {
+      // 主题切换
+      const themeToggle = document.getElementById('themeToggle');
+      if (themeToggle) {
+        // 初始化主题
+        const isDarkMode = localStorage.getItem('theme') === 'dark' || 
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDarkMode) {
+          document.documentElement.classList.add('dark');
+        }
+
+        // 更新主题UI
+        function updateThemeUI(isDark) {
+          const icon = themeToggle.querySelector('i');
+          const text = themeToggle.querySelector('span');
+          if (icon && text) {
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            text.textContent = isDark ? '浅色模式' : '深色模式';
+          }
+        }
+
+        // 设置初始UI
+        updateThemeUI(isDarkMode);
+
+        // 主题切换事件
+        themeToggle.onclick = () => {
+          const isDark = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+          updateThemeUI(isDark);
+        };
+      }
+
+      // 语言切换
+      const langToggle = document.getElementById('langToggle');
+      if (langToggle) {
+        // 初始化语言
+        const currentLang = localStorage.getItem('language') || 'zh';
+        document.documentElement.setAttribute('lang', currentLang);
+
+        // 更新语言UI
+        function updateLangUI(lang) {
+          const text = langToggle.querySelector('span');
+          if (text) {
+            text.textContent = lang === 'zh' ? 'English' : '中文';
+          }
+        }
+
+        // 设置初始UI
+        updateLangUI(currentLang);
+
+        // 语言切换事件
+        langToggle.onclick = () => {
+          const newLang = document.documentElement.getAttribute('lang') === 'zh' ? 'en' : 'zh';
+          document.documentElement.setAttribute('lang', newLang);
+          localStorage.setItem('language', newLang);
+          updateLangUI(newLang);
+        };
+      }
+    }
+
+    // 侧边栏功能
+    function initSidebar() {
+      const avatarButton = document.getElementById('avatarButton');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+
+      if (avatarButton && sidebar && overlay) {
+        function toggleSidebar() {
+          sidebar.classList.toggle('open');
+          overlay.classList.toggle('visible');
+        }
+
+        avatarButton.onclick = toggleSidebar;
+        overlay.onclick = toggleSidebar;
+      }
+    }
+
+    // 页面加载完成后初始化所有功能
+    window.onload = function() {
+      initThemeAndLang();
+      initSidebar();
+    };
+  </script>
+
   <!-- 主体内容 -->
   <main class="flex-1 flex flex-col items-center justify-center text-center px-0">
     <div class="perplexity-center w-full">
