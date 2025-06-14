@@ -46,6 +46,13 @@ const langData = {
     overview_card3_title: '持续更新',
     overview_card3_desc: '不断收录新优质内容',
     category_entry: '分类入口',
+    create_title: '创建你的AI提示词',
+    create: '创建',
+    create_placeholder: '创建你的AI提示词...',
+    analyze: '分析',
+    local: '本地',
+    finance: '金融',
+    shopping: '购物',
   },
   en: {
     home: 'Home',
@@ -93,6 +100,13 @@ const langData = {
     overview_card3_title: 'Continuous Updates',
     overview_card3_desc: 'Constantly adding new quality content',
     category_entry: 'Categories',
+    create_title: 'Create Your AI Prompt',
+    create: 'Create',
+    create_placeholder: 'Create your AI prompt...',
+    analyze: 'Analyze',
+    local: 'Local',
+    finance: 'Finance',
+    shopping: 'Shopping',
   }
 };
 
