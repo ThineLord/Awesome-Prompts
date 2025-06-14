@@ -65,6 +65,55 @@
       background: #334155;
       color: #38bdf8;
     }
+    .neon-logo {
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+    html.dark .neon-logo {
+      color: #fff;
+      text-shadow:
+        0 0 8px #00eaff,
+        0 0 16px #00eaff,
+        0 0 32px #00eaff,
+        0 0 64px #00eaff,
+        0 0 128px #00eaff;
+    }
+    html.dark .neon-logo::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 140%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(0,234,255,0.25) 0%, rgba(0,234,255,0.08) 80%, transparent 100%);
+      filter: blur(16px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    html.light .neon-logo {
+      color: #111;
+      text-shadow:
+        0 0 8px #ff0033,
+        0 0 16px #ff0033,
+        0 0 32px #ff0033,
+        0 0 64px #ff0033,
+        0 0 128px #ff0033;
+    }
+    html.light .neon-logo::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 140%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(255,0,51,0.18) 0%, rgba(255,0,51,0.06) 80%, transparent 100%);
+      filter: blur(16px);
+      z-index: -1;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 min-h-screen flex flex-col">
